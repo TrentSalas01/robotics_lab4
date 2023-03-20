@@ -43,7 +43,7 @@ if __name__ == '__main__':
 			lower_yellow_hsv = np.array([25,1,1])
 			upper_yellow_hsv = np.array([60,255,255])
 			yellow_mask = cv2.inRange(hsv, lower_yellow_hsv, upper_yellow_hsv)
-			yellow_mask = cv2.rectangle(yellow_mask, rect1, rect2, color, 250)
+			yellow_mask = cv2.rectangle(yellow_mask, rect1, rect2, color, 350)
 			# convert it to ros msg and publish it
 			img_msg = CvBridge().cv2_to_imgmsg(yellow_mask, encoding="mono8")
 			# publish the image
