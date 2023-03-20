@@ -26,7 +26,7 @@ if __name__ == '__main__':
 	# define a subscriber to ream images
 	img_sub = rospy.Subscriber("/camera/color/image_raw", Image, get_image) 
 	# define a publisher to publish images
-	img_pub = rospy.Publisher('/mono_ball', Image, queue_size = 1)
+	img_pub = rospy.Publisher('/ball_2D', Image, queue_size = 1)
 	
 	# set the loop frequency
 	rate = rospy.Rate(10)
