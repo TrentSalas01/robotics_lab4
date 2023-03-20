@@ -34,15 +34,21 @@ if __name__ == '__main__':
 	while not rospy.is_shutdown():
 		# make sure we process if the camera has started streaming images
 		if img_received:
+			# set top left corner coords
 			rect1 = (0, 0)
+			# set bottom right corner coords
 			rect2 = (1080, 720)
+			# assign variable to color white
 			color = (0, 0, 0)
 			# flip the image up
 			hsv = cv2.cvtColor(rgb_img, cv2.COLOR_RGB2HSV)
-			# define the upper and lower ranges
+			# set lower bound
 			lower_yellow_hsv = np.array([25,1,1])
+			# set upper bound
 			upper_yellow_hsv = np.array([60,255,255])
+			# define the upper and lower ranges
 			yellow_mask = cv2.inRange(hsv, lower_yellow_hsv, upper_yellow_hsv)
+			# set up the rectangle to shade corners black
 			yellow_mask = cv2.rectangle(yellow_mask, rect1, rect2, color, 350)
 			# convert it to ros msg and publish it
 			img_msg = CvBridge().cv2_to_imgmsg(yellow_mask, encoding="mono8")
